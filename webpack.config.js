@@ -16,10 +16,12 @@ const config = {
       {
         test: /\.(js|jsx)$/,
         include: APP_DIR,
+        exclude: /node_modules/,
         use: ['babel-loader'],
       },
       {
         test: /\.(s*)css$/,
+        exclude: /node_modules/,
         use: ExtractTextPlugin.extract({ 
           fallback: 'style-loader',
           use: ['css-loader', 'sass-loader'],

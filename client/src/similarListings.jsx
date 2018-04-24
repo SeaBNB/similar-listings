@@ -29,14 +29,11 @@ class SimilarListings extends React.Component {
 
   getListings() {
     const url = `http://${HOST}:${PORT}/listings/${this.statics.id}/similar_listings`;
-    return new Promise((resolve, reject) => {
-      axios.get(url)
-        .then(({ data }) => this.setState({ listings: data }))
-        .then(() => resolve())
-        .catch((error) => {
-          reject(error);
-        });
-    });
+    return (axios.get(url)
+      .then(({ data }) => this.setState({ listings: data }))
+      .catch((error) => {
+        Promise.reject(error);
+      }));
   }
 
   setListings() {
